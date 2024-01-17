@@ -1,0 +1,97 @@
+@import 'mocha.css';
+
+* {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 11px;
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+* {
+  border: none;
+  border-radius: 3px;
+  min-height: 0;
+  margin: 0.5px;
+}
+
+#waybar {
+  background-color: transparent;
+  color: @text;
+}
+
+#workspaces {
+  border-radius: 30px;
+  padding: 5px;
+  background-color: @surface0;
+}
+
+#workspaces button {
+  color: @sky;
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  border-radius: 25px;
+  opacity: 0.5;
+}
+
+#workspaces button.focused {
+  background-color: transparent;
+}
+
+#workspaces button:hover {
+  color: @green;
+  opacity: 0.7;
+}
+
+#workspaces button.active {
+  color: @lavender;
+  opacity: 1;
+}
+
+#workspaces button.urgent {
+  background-color: #a01e1c;
+}
+
+#custom-music,
+#tray,
+#clock,
+#wireplumber,
+#memory,
+#cpu,
+#custom-weather,
+#network {
+  background-color: @surface0;
+  padding: 13px;
+  border-radius: 25px;
+}
+
+#clock {
+  color: @blue;
+}
+
+#wireplumber {
+  color: @maroon;
+}
+
+#custom-music {
+  color: @sky;
+}
+
+#custom-weather {
+  color: @green;
+}
+
+#network {
+  color: @peach;
+}
+
+#cpu {
+  color: @teal;
+}
+
+#memory {
+  color: @mauve;
+}
