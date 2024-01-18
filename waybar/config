@@ -2,9 +2,9 @@
   "layer": "top",
   "position": "top",
 
-  "margin-left": 10,
+  "margin-left": 5,
   "margin-bottom": 0,
-  "margin-right": 10,
+  "margin-right": 5,
 
   "spacing": 5,
 
@@ -76,7 +76,7 @@
     "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
     "tooltip-format": " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n",
     "tooltip-format-wifi": " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\nInstance: {ifname}\n {bandwidthUpBits}  {bandwidthDownBits}",
-    "min-length": 15,
+    "min-length": 10,
     "max-length": 25
   }
 }
