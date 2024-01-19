@@ -30,8 +30,8 @@
   "clock": {
     "timezone": "Europe/Istanbul",
     "tooltip-format": "<big>{:%d %B - %Y}</big>\n<tt>{calendar}</tt>",
-    "format-alt": " {:%d/%m/%Y}",
-    "format": " {:%H:%M:%S %p}",
+    "format-alt": "  {:%d/%m/%Y}",
+    "format": "  {:%H:%M:%S %p}",
     "interval": 1
   },
 
