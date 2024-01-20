@@ -1,7 +1,7 @@
 @import 'themes/mocha.css';
 
 * {
-  font-family: JetBrainsMono Nerd Font;
+  font-family: 'Fira Sans Semibold', FontAwesome, Roboto, Helvetica, Arial, sans-serif;  
   font-size: 10px;
   font-weight: 900;
   margin: 0.5px;
@@ -12,14 +12,16 @@
 }
 
 #waybar {
-  background-color: transparent;
+  background: transparent;
+  transition-property: background-color;
+  transition-duration: 500ms;
   color: @text;
   opacity: 0.7;
 }
 
 #workspaces {
   border-radius: 1rem;
-  padding: 2px;
+  padding: 1px;
   background-color: @surface0;
 }
 
@@ -27,7 +29,7 @@
   color: @sky;
   background-color: transparent;
   border: none;
-  padding: 3px;
+  padding: 2px;
   border-radius: 1rem;
   opacity: 0.5;
 }
@@ -59,7 +61,7 @@
 #custom-weather,
 #network {
   background-color: @surface0;
-  padding: 0px 1rem 0px 1rem;
+  padding: 0px 0.8rem 0px 0.8rem;
   border-radius: 1rem;
 }
 
