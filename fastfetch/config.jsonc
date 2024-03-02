@@ -1,0 +1,31 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+  "modules": [
+    "os",
+    "host",
+    "kernel",
+    "packages",
+    "break",
+    "uptime",
+    "cpu",
+    "gpu",
+    "disk",
+    "break",
+    "monitor",
+    "display",
+    "opengl",
+    "vulkan",
+    "break",
+    "wm",
+    "de",
+    "lm",
+    "locale",
+    "users"
+  ],
+
+  "general": {
+    "thread": true,
+    "processingTimeout": -1
+  }
+}

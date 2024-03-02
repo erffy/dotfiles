@@ -1,0 +1,77 @@
+{
+  "layer": "top",
+  "position": "top",
+
+  "margin-left": 5,
+  "margin-bottom": 0,
+  "margin-right": 5,
+
+  "spacing": 5,
+
+  "modules-left": ["hyprland/workspaces", "tray"],
+  "modules-center": ["wireplumber", "clock", "custom/media"],
+  "modules-right": ["cpu", "memory", "network"],
+
+  "tray": {
+    "icon-size": 15,
+    "spacing": 5
+  },
+
+  "custom/media": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 1,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
+    "max-length": 50
+  },
+
+  "clock": {
+    "timezone": "Europe/Istanbul",
+    "tooltip-format": "<big>{:%d %B - %Y}</big>\n<tt>{calendar}</tt>",
+    "format-alt": "  {:%d/%m/%Y}",
+    "format": "  {:%H:%M %p}",
+    "interval": 1
+  },
+
+  "wireplumber": {
+    "scroll-step": 5,
+    "max-volume": 150,
+    "format": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "memory": {
+    "interval": 1,
+    "format": " {used:0.2f} / {total:0.0f} GB"
+  },
+
+  "cpu": {
+    "interval": 1,
+    "format": "  {max_frequency}GHz - {usage}%",
+    "max-length": 25,
+    "min-length": 15
+  },
+
+  "network": {
+    "format-wifi": "  {ifname}",
+    "format-ethernet": " {bandwidthDownBytes}   {bandwidthUpBytes}",
+    "interval": 1,
+    "format-linked": "{ifname} (No IP) ",
+    "format": "",
+    "format-disconnected": "",
+    "format-alt": " {essid}",
+    "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
+    "tooltip-format": " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n",
+    "tooltip-format-wifi": " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\nInstance: {ifname}\n {bandwidthUpBits}  {bandwidthDownBits}",
+    "min-length": 10,
+    "max-length": 25
+  }
+}
