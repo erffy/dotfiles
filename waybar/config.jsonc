@@ -8,8 +8,8 @@
 
   "spacing": 5,
 
-  "modules-left": ["hyprland/workspaces", "tray"],
-  "modules-center": ["wireplumber", "clock", "custom/media"],
+  "modules-left": ["hyprland/workspaces", "wireplumber", "custom/media", "tray"],
+  "modules-center": ["clock"],
   "modules-right": ["cpu", "memory", "network"],
 
   "tray": {
@@ -40,7 +40,7 @@
   "wireplumber": {
     "scroll-step": 5,
     "max-volume": 150,
-    "format": "{icon}  {volume}%",
+    "format": "{icon} {volume}%",
     "format-muted": "",
     "format-icons": {
       "default": ["", "", " "]
