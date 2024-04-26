@@ -15,10 +15,8 @@ configuration {
 	scroll-method: 0;
 	normalize-match: true;
 	show-icons: true;
-	icon-theme: "Tela-circle-dracula";
-/*	cache-dir: ;*/
-	steal-focus: false;
-/*	dpi: -1;*/
+	icon-theme: "Papirus";
+	steal-focus: true;
 
 	/*---------- Matching setting ----------*/
 	matching: "normal";
@@ -33,17 +31,15 @@ configuration {
 	/*---------- Drun settings ----------*/
 	drun-categories: "";
 	drun-match-fields: "name,generic,exec,categories,keywords";
-	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+	drun-display-format: "{name} [<span weight='light' size='small'>({generic})</span>]";
 	drun-show-actions: false;
 	drun-url-launcher: "xdg-open";
 	drun-use-desktop-cache: false;
 	drun-reload-desktop-cache: false;
 	drun {
-		/** Parse user desktop files. */
 		parse-user:   true;
-		/** Parse system desktop files. */
 		parse-system: true;
-    }
+  }
 
 	/*---------- Run settings ----------*/
 	run-command: "{cmd}";
