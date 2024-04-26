@@ -12,10 +12,9 @@
 }
 
 tooltip {
-  color: rgb(100, 100, 100);
-  background-color: @surface1;
+  color: white;
+  background-color: black;
   border-radius: 10px;
-  opacity: 0.8;
 }
 
 #workspaces button {
