@@ -7,18 +7,18 @@
   "margin-right": 5,
   "spacing": 5,
   "modules-left": [
-    "hyprland/workspaces",
-    "custom/media"
+    "cpu",
+    "memory",
+    "network"
   ],
   "modules-center": [
-    "clock"
+    "hyprland/workspaces"
   ],
   "modules-right": [
     "tray",
-    "cpu",
-    "memory",
-    "network",
-    "wireplumber"
+    "custom/media",
+    "wireplumber",
+    "clock"
   ],
   "tray": {
     "icon-size": 15,
@@ -42,7 +42,7 @@
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl next",
     "on-click-middle": "playerctl previous",
-    "max-length": 60
+    "max-length": 45
   },
   "clock": {
     "format": "  {:%I:%M %p ・   %d/%m/%y}",
@@ -84,14 +84,14 @@
   "memory": {
     "interval": 1,
     "format": "  {used:0.2f} / {total:0.0f} GB",
-    "min-length": 5,
-    "max-length": 25
+    "min-length": 10,
+    "max-length": 20
   },
   "cpu": {
     "interval": 1,
     "format": "  {usage}% ・ {max_frequency}GHz",
-    "min-length": 5,
-    "max-length": 25
+    "min-length": 15,
+    "max-length": 20
   },
   "network": {
     "interval": 1,
@@ -102,7 +102,7 @@
     "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
     "tooltip-format": "{ipaddr} ・ {ifname}\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
     "tooltip-format-wifi": "  {essid} ({frequency}MHz) ({signalStrength}%)\n{ipaddr} ・ {ifname}\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
-    "min-length": 5,
-    "max-length": 25
+    "min-length": 10,
+    "max-length": 20
   }
 }

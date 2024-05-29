@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 DATE=$(date +%Y%m%d_%H%M%S)
+LOCATION="$HOME/Pictures"
 
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 <area>"
@@ -16,10 +17,10 @@ fi
 
 if [ "$1" == "specific" ]; then
   # Capture a specific area
-  grim -g "$(slurp)" - | wl-copy >"$HOME/Pictures/Screenshot_${DATE}.png"
+  grim -g "$(slurp)" - | wl-copy >"$LOCATION/Screenshot_${DATE}.png"
   echo "Specific area screenshot taken and copied."
 elif [ "$1" == "full" ]; then
   # Capture full screen
-  grim - | wl-copy >"$HOME/Pictures/Screenshot_${DATE}.png"
+  grim - | wl-copy >"$LOCATION/Screenshot_${DATE}.png"
   echo "Full screen screenshot taken and copied."
 fi
