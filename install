@@ -1,0 +1,170 @@
+#!/usr/bin/sh
+
+echo "Downloading config file..."
+curl -o install_config.prop 'https://raw.githubusercontent.com/erffy/dotfiles/main/config.prop'
+
+clear
+
+source ./install_config.prop
+
+log() {
+  echo -e "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a $LOG_FILE
+}
+
+color_output() {
+  local color=$1
+  shift
+  echo -e "\e[${color}m$*\e[0m"
+}
+
+install_dotfiles() {
+  read -p "Do you want to install dotfiles? [Y/N]: " install_answer
+  if [[ "$install_answer" != "Y" ]]; then
+    color_output 31 "Installation aborted."
+    exit 0
+  fi
+
+  color_output 34 "Installing dotfiles..."
+
+  local retries=3
+  while ((retries > 0)); do
+    if [[ "$use_git" == "true" ]]; then
+      git clone $URL $BASE && break
+    elif [[ "$use_ssh" == "true" ]]; then
+      git clone $SSH_URL $BASE && break
+    else
+      color_output 31 "Error: Please specify either --use-git or --use-ssh."
+      exit 1
+    fi
+
+    retries=$((retries - 1))
+    sleep 2
+  done
+
+  if ((retries == 0)); then
+    color_output 31 "Error: Failed to clone repository after multiple attempts."
+    exit 1
+  fi
+
+  read -p "Installation method ['L'inking / 'C'opying]: " method
+  if [[ "$method" == "L" ]]; then
+    ln -s $BASE $TARGET
+  else
+    cp -r $BASE $TARGET
+  fi
+
+  check_dependencies
+}
+
+check_dependencies() {
+  for dep in "${DEPS[@]}"; do
+    IFS=":" read -r repo package description <<<"$dep"
+      if ! "$pm" -Qi "$package" &>/dev/null; then
+        log "Warning: $description ($repo/$package) is not installed."
+      fi
+  done
+}
+
+uninstall_dotfiles() {
+  read -p "Do you want to uninstall dotfiles? [Y/N]: " uninstall_answer
+  if [[ "$uninstall_answer" != "Y" ]]; then
+    color_output 31 "Uninstallation aborted."
+    exit 0
+  fi
+
+  color_output 34 "Uninstalling dotfiles..."
+  rm -rf $BASE
+
+  read -p "Do you want to fully uninstall dotfiles? This will remove the erffy dotfiles in target directory too. [Y/N]: " fully_answer
+  if [[ "$fully_answer" == "Y" ]]; then
+    rm -rf $TARGET/{dunst,waybar,hypr,rofi,fastfetch,kitty}
+    log "Fully uninstalled dotfiles from $TARGET directory."
+  fi
+
+  color_output 32 "Uninstallation completed."
+}
+
+show_help() {
+  echo "Usage: dotfiles.sh [OPTIONS]"
+  echo "Note: This script is currently Beta."
+  echo "Options:"
+  echo "  --install                Install dotfiles"
+  echo "  --uninstall              Uninstall dotfiles"
+  echo "  --use-git                Use git for installation"
+  echo "  --use-ssh                Use SSH for installation"
+  echo "  --pm <pacman|yay|...>    Specify package manager for dependency check (aur-helper supported package manager recommended)"
+  echo "  --force                  Force uninstallation"
+  echo "  --fully                  Fully uninstall, including target directory"
+  echo "  --verbose                Enable verbose output"
+  echo "  --help                   Show this help message"
+}
+
+install=false
+uninstall=false
+use_git=false
+use_ssh=false
+pm=""
+fully=false
+verbose=false
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+  --install)
+    install=true
+    ;;
+  --uninstall)
+    uninstall=true
+    ;;
+  --use-git)
+    use_git=true
+    ;;
+  --use-ssh)
+    use_ssh=true
+    ;;
+  --pm)
+    shift
+    pm=$1
+    ;;
+  --force)
+    force=true
+    ;;
+  --fully)
+    fully=true
+    ;;
+  --verbose)
+    verbose=true
+    ;;
+  --help)
+    show_help
+    exit 0
+    ;;
+  *)
+    color_output 31 "Error: Unknown option $1"
+    exit 1
+    ;;
+  esac
+  shift
+done
+
+if [[ "$use_git" == "true" ]] && [[ "$use_ssh" == "true" ]]; then
+  color_output 31 "Error: Please choose either --use-git or --use-ssh, not both."
+  exit 1
+fi
+
+if [[ "$install" == "true" ]]; then
+  if [[ -z "$pm" ]]; then
+    color_output 31 "Error: Please specify a package manager using --pm."
+    exit 1
+  fi
+
+  install_dotfiles
+elif [[ "$uninstall" == "true" ]]; then
+  uninstall_dotfiles
+else
+  show_help
+  exit 1
+fi
+
+rm -rf install_config.prop
+
+exit 0
