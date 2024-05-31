@@ -1,0 +1,5 @@
+#!/bin/sh
+
+ms=$(ping 1.1.1.1 -c 1 | grep 'time=' | awk -F 'time=' '{print $2}' | awk '{print $1, "ms"}')
+
+echo $ms

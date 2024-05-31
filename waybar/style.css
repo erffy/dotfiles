@@ -44,6 +44,7 @@ tooltip {
 #cpu,
 #memory,
 #custom-media,
+#custom-ping,
 #clock,
 #battery,
 #wireplumber,
@@ -92,4 +93,8 @@ tooltip {
 
 #custom-media {
 	color: @mauve;
+}
+
+#custom-ping {
+  color: @peach;
 }
