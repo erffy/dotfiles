@@ -22,12 +22,12 @@ notify_user() {
 
 if [ "$1" == "specific" ]; then
   # Capture a specific area
-  grim -g -c "$(slurp)" $SAVE_TYPE
+  grim -g "$(slurp)" $SAVE_TYPE
   wl-copy < $SAVE_TYPE
   notify_user "Specific area"
 elif [ "$1" == "full" ]; then
   # Capture full screen
-  grim -c $SAVE_TYPE
+  grim $SAVE_TYPE
   wl-copy < $SAVE_TYPE
   notify_user "Full screen"
 fi
