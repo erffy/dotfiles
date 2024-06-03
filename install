@@ -1,11 +1,11 @@
 #!/usr/bin/sh
 
 echo "Downloading config file..."
-curl -o install_config.prop 'https://raw.githubusercontent.com/erffy/dotfiles/main/config.prop'
+curl -o config.tmp.prop 'https://raw.githubusercontent.com/erffy/dotfiles/main/config.prop'
 
 clear
 
-source ./install_config.prop
+source ./config.tmp.prop
 
 log() {
   echo -e "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a $LOG_FILE
@@ -24,7 +24,7 @@ install_dotfiles() {
     exit 0
   fi
 
-  color_output 34 "Installing dotfiles..."
+  color_output 34 "Downloading dotfiles..."
 
   local retries=3
   while ((retries > 0)); do
@@ -75,10 +75,10 @@ uninstall_dotfiles() {
   color_output 34 "Uninstalling dotfiles..."
   rm -rf $BASE
 
-  read -p "Do you want to fully uninstall dotfiles? This will remove the erffy dotfiles in target directory too. [Y/N]: " fully_answer
+  read -p "Do you want to fully uninstall dotfiles? This will remove the erffy dotfiles in '$TARGET' directory too. [Y/N]: " fully_answer
   if [[ "$fully_answer" == "Y" ]]; then
-    rm -rf $TARGET/{dunst,waybar,hypr,rofi,fastfetch,kitty}
-    log "Fully uninstalled dotfiles from $TARGET directory."
+    rm -rf $TARGET/{dunst,waybar,hypr,rofi,fastfetch,kitty,qt6ct,gtk-3.0}
+    log "Fully uninstalled dotfiles from '$TARGET' directory."
   fi
 
   color_output 32 "Uninstallation completed."
@@ -165,6 +165,6 @@ else
   exit 1
 fi
 
-rm -rf install_config.prop
+rm -rf config.tmp.prop
 
 exit 0

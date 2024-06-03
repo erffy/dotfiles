@@ -33,4 +33,5 @@ DEPS=(
   "extra:xdg-desktop-portal:XDG Desktop Portal"
   "extra:xdg-desktop-portal-hyprland:XDG Desktop Portal Hyprland"
   "extra:xdg-desktop-portal-gtk:XDG Desktop Portal GTK"
+  "extra:xdg-desktop-portal-wlr:XDG Desktop Portal WLR"
 )
