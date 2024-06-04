@@ -77,7 +77,7 @@ uninstall_dotfiles() {
 
   read -p "Do you want to fully uninstall dotfiles? This will remove the erffy dotfiles in '$TARGET' directory too. [Y/N]: " fully_answer
   if [[ "$fully_answer" == "Y" ]]; then
-    rm -rf $TARGET/{dunst,waybar,hypr,rofi,fastfetch,kitty,qt6ct,gtk-3.0}
+    rm -rf $TARGET/{dunst,waybar,sway,rofi,fastfetch,kitty,qt6ct,gtk-3.0}
     log "Fully uninstalled dotfiles from '$TARGET' directory."
   fi
 

@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 DATE=$(date +%Y%m%d_%H%M%S)
 LOCATION="$HOME/Pictures"

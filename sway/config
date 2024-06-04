@@ -1,0 +1,12 @@
+set $super Mod4
+set $alt Mod1
+set $shift Shift
+
+output * bg $HOME/.config/sway/wallpaper.jpg fill
+
+bar {
+	swaybar_command waybar
+	workspace_buttons yes
+}
+
+include $HOME/.config/sway/config.d/*

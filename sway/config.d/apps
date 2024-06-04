@@ -1,0 +1,6 @@
+set $terminal kitty
+set $launcher rofi -show drun -show-icons -theme $HOME/.config/rofi/style.rasi
+set $files dolphin
+set $browser chromium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
+set $editor codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
+set $screenshot $HOME/.config/sway/scripts.d/screenshot.sh

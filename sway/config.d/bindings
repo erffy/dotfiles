@@ -1,0 +1,51 @@
+# Application shortcuts
+bindsym $super+F fullscreen
+bindsym $super+Q kill
+bindsym $super+A exec $launcher
+bindsym $super+S exec $terminal
+bindsym $super+D exec $files
+bindsym $super+W exec $browser
+bindsym $super+C exec $editor
+bindsym $super+$shift+R exec reboot
+bindsym $super+$shift+S exec poweroff
+bindsym $shift+Print exec $screenshot specific
+bindsym $shift+P exec hyprpicker -a
+bindsym Print exec $screenshot full
+bindsym KP_Add exec wpctl set-volume -l 1.50 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym KP_Subtract exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+
+# Move focus with mainMod + arrow keys
+bindsym $super+Left focus left
+bindsym $super+Right focus right
+bindsym $super+Up focus up
+bindsym $super+Down focus down
+
+# Switch workspaces with mainMod + [0-9]
+bindsym $super+1 workspace 1
+bindsym $super+2 workspace 2
+bindsym $super+3 workspace 3
+bindsym $super+4 workspace 4
+bindsym $super+5 workspace 5
+bindsym $super+6 workspace 6
+bindsym $super+7 workspace 7
+bindsym $super+8 workspace 8
+bindsym $super+9 workspace 9
+bindsym $super+0 workspace 10
+
+# Move active window to a workspace with mainMod + shift + [0-9]
+bindsym $super+$shift+1 move container to workspace 1
+bindsym $super+$shift+2 move container to workspace 2
+bindsym $super+$shift+3 move container to workspace 3
+bindsym $super+$shift+4 move container to workspace 4
+bindsym $super+$shift+5 move container to workspace 5
+bindsym $super+$shift+6 move container to workspace 6
+bindsym $super+$shift+7 move container to workspace 7
+bindsym $super+$shift+8 move container to workspace 8
+bindsym $super+$shift+9 move container to workspace 9
+bindsym $super+$shift+0 move container to workspace 10
+
+# Move/resize windows with mainMod + LMB/RMB and dragging
+floating_modifier $super
+
+bindsym $super+Button1 move
+bindsym $super+Button3 resize

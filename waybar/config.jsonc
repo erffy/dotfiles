@@ -2,30 +2,15 @@
   "layer": "top",
   "position": "top",
   "reload_style_on_change": true,
-  "margin-left": 5,
-  "margin-bottom": 0,
-  "margin-right": 5,
   "spacing": 5,
-  "modules-left": [
-    "cpu",
-    "memory",
-    "network",
-    "custom/ping"
-  ],
-  "modules-center": [
-    "hyprland/workspaces"
-  ],
-  "modules-right": [
-    "tray",
-    "custom/media",
-    "wireplumber",
-    "clock"
-  ],
+  "modules-left": [ "cpu", "memory", "network", "custom/ping" ],
+  "modules-center": [ "sway/workspaces" ],
+  "modules-right": [ "tray", "custom/media", "wireplumber", "clock" ],
   "tray": {
     "icon-size": 15,
     "spacing": 5
   },
-  "hyprland/workspaces": {
+  "sway/workspaces": {
     "active-only": false,
     "all-outputs": true,
     "disable-scroll": true,
@@ -85,13 +70,13 @@
   "memory": {
     "interval": 1,
     "format": "  {used:0.2f} / {total:0.0f} GB",
-    "min-length": 10,
+    "min-length": 12,
     "max-length": 20
   },
   "cpu": {
     "interval": 1,
     "format": "  {usage}% ・ {max_frequency}GHz",
-    "min-length": 15,
+    "min-length": 16,
     "max-length": 20
   },
   "network": {
@@ -103,7 +88,7 @@
     "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
     "tooltip-format": "{ipaddr} ・ {ifname}\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
     "tooltip-format-wifi": "  {essid} ({frequency}MHz) ({signalStrength}%)\n{ipaddr} ・ {ifname}\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
-    "min-length": 10,
+    "min-length": 12,
     "max-length": 20
   },
   "custom/ping": {
@@ -111,8 +96,7 @@
     "format": "   {}",
     "exec": "~/.config/waybar/scripts/ping",
     "tooltip": false,
-    "escape": true,
-    "min-length": 10,
+    "min-length": 12,
     "max-length": 20
   }
 }

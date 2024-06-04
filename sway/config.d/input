@@ -1,0 +1,15 @@
+input "type:keyboard" {
+	xkb_layout tr
+	xkb_numlock enabled
+}
+
+input "type:touchpad" {
+	dwt enabled
+	tap enabled
+	natural_scroll enabled
+	middle_emulation enabled
+}
+
+input "7511:4879:2.4G_Wireless_Optical_Mouse__Mouse" {
+	pointer_accel 0.2
+}
