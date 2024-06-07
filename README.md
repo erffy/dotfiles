@@ -1,5 +1,5 @@
 ## Erffy Dotfiles
-- My hyprland config files.
+- My config files.
 
 ### Installation
 - Note: This script is currently Beta.
