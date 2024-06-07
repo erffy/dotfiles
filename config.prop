@@ -8,6 +8,8 @@ LOG_FILE="$HOME/.erffy/install.log"
 DEPS=(
   "extra:sway:Window Manager"
   "extra:swaybg:Sway Wallpaper Utility"
+  "chaotic-aur:autotiling:Autotiling"
+  "cachyos:clipman:Clipboard Manager"
   "extra:imv:Image Viewer"
   "extra:dunst:Notification Manager"
   "extra:waybar:Wayland Bar"
