@@ -97,6 +97,6 @@
     "exec": "~/.config/waybar/scripts/ping",
     "tooltip": false,
     "min-length": 12,
-    "max-length": 20
+    "max-length": 35
   }
 }

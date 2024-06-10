@@ -1,5 +1,23 @@
 #!/bin/sh
 
-ms=$(ping 1.1.1.1 -c 1 | grep 'time=' | awk -F 'time=' '{print $2}' | awk '{print $1, "ms"}')
+TMP="$HOME/.cache/ping.prop"
 
-echo $ms
+if [ ! -f $TMP ]; then
+  echo -e "min=1000000\nmax=0" >$TMP
+fi
+
+source $TMP
+
+current=$(ping 1.1.1.1 -c 1 | grep 'time=' | awk -F 'time=' '{print $2}' | awk '{print $1}')
+
+if [ "$(echo "$current > $max" | bc -l)" -eq 1 ]; then
+  max=$current
+fi
+
+if [ "$(echo "$current < $min" | bc -l)" -eq 1 ]; then
+  min=$current
+fi
+
+echo -e "min=$min\nmax=$max" >$TMP
+
+echo "${min}ms ・ ${current}ms ・ ${max}ms"
