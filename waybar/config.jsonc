@@ -83,8 +83,8 @@
     "interval": 1,
     "format-wifi": "   {bandwidthTotalBytes}",
     "format-ethernet": "   {bandwidthTotalBytes}",
-    "format-linked": "  {ifname} (No IP)",
-    "format-disconnected": "",
+    "format-linked": "  {ifname} ・ No IP",
+    "format-disconnected": "",
     "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
     "tooltip-format": "{ipaddr} ・ {ifname}\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
     "tooltip-format-wifi": "  {essid} ({frequency}MHz) ({signalStrength}%)\n{ipaddr} ・ {ifname}\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
@@ -95,6 +95,7 @@
     "interval": 1,
     "format": "   {}",
     "exec": "~/.config/waybar/scripts/ping",
+    "exec-if": "ping google.com -c 1",
     "tooltip": false,
     "min-length": 12,
     "max-length": 35

@@ -1,20 +1,30 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
+
+# Ensure script exits immediately on error
+set -eo pipefail
 
 echo "Downloading config file..."
-curl -o config.tmp.prop 'https://raw.githubusercontent.com/erffy/dotfiles/main/config.prop'
+curl -o config.tmp.prop 'https://raw.githubusercontent.com/erffy/dotfiles/main/config.prop' && source ./config.tmp.prop
 
 clear
 
-source ./config.tmp.prop
-
 log() {
-  echo -e "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a $LOG_FILE
+  echo -e "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
 }
 
 color_output() {
   local color=$1
   shift
   echo -e "\e[${color}m$*\e[0m"
+}
+
+check_dependencies() {
+  for dep in "${DEPS[@]}"; do
+    IFS=":" read -r repo package description <<<"$dep"
+    if ! $pm -Qi $package &>/dev/null; then
+      log "Warning: $description ($repo/$package) is not installed."
+    fi
+  done
 }
 
 install_dotfiles() {
@@ -54,15 +64,6 @@ install_dotfiles() {
   fi
 
   check_dependencies
-}
-
-check_dependencies() {
-  for dep in "${DEPS[@]}"; do
-    IFS=":" read -r repo package description <<<"$dep"
-      if ! "$pm" -Qi "$package" &>/dev/null; then
-        log "Warning: $description ($repo/$package) is not installed."
-      fi
-  done
 }
 
 uninstall_dotfiles() {
@@ -109,44 +110,30 @@ verbose=false
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-  --install)
-    install=true
-    ;;
-  --uninstall)
-    uninstall=true
-    ;;
-  --use-git)
-    use_git=true
-    ;;
-  --use-ssh)
-    use_ssh=true
-    ;;
-  --pm)
-    shift
-    pm=$1
-    ;;
-  --force)
-    force=true
-    ;;
-  --fully)
-    fully=true
-    ;;
-  --verbose)
-    verbose=true
-    ;;
-  --help)
-    show_help
-    exit 0
-    ;;
-  *)
-    color_output 31 "Error: Unknown option $1"
-    exit 1
-    ;;
+    --install) install=true ;;
+    --uninstall) uninstall=true ;;
+    --use-git) use_git=true ;;
+    --use-ssh) use_ssh=true ;;
+    --pm)
+      shift
+      pm=$1
+      ;;
+    --force) force=true ;;
+    --fully) fully=true ;;
+    --verbose) verbose=true ;;
+    --help)
+      show_help
+      exit 0
+      ;;
+    *)
+      color_output 31 "Error: Unknown option $1"
+      exit 1
+      ;;
   esac
   shift
 done
 
-if [[ "$use_git" == "true" ]] && [[ "$use_ssh" == "true" ]]; then
+if [[ "$use_git" == "true" && "$use_ssh" == "true" ]]; then
   color_output 31 "Error: Please choose either --use-git or --use-ssh, not both."
   exit 1
 fi

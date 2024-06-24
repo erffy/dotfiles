@@ -1,3 +1,7 @@
+#
+# Inputs
+#
+
 input "type:keyboard" {
 	xkb_layout tr
 	xkb_numlock enabled
