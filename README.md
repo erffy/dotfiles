@@ -7,3 +7,7 @@
 ```sh
 curl https://raw.githubusercontent.com/erffy/dotfiles/main/install | sh
 ```
+
+<br>
+
+![Alt](https://repobeats.axiom.co/api/embed/f055ff5f2692650c3f03152ccd95c9516af066bd.svg "Repobeats analytics image")
