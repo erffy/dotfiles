@@ -1,4 +1,4 @@
-@import "colors/colors.rasi"
+@import 'shared/color.rasi'
 
 configuration {
     show-icons:                     true;

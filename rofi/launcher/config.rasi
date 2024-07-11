@@ -1,10 +1,5 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * 
- * Configuration For Rofi Version: 1.7.3
- **/
+@import 'shared/font.rasi'
+@import 'shared/color.rasi'
 
 configuration {
 	modi: "drun,run,filebrowser,window";
@@ -40,7 +35,7 @@ configuration {
 	run-list-command: "";
 	run-shell-command: "{terminal} -e {cmd}";
 
-	run,drun {
+	run, drun {
 		fallback-icon: "application-x-addon";
 	}
 
@@ -63,7 +58,6 @@ configuration {
 	display-filebrowser: "Files";
 
 	terminal: "rofi-sensible-terminal";
-	font: "Google Sans Regular 12";
 	sort: false;
 	threads: 0;
 	click-to-exit: true;

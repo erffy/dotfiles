@@ -11,6 +11,7 @@ for_window [class=".*"] border pixel 0
 
 for_window [app_id="ark"] floating enable
 for_window [app_id="dolphin"] floating enable
+for_window [app_id="digikam"] floating enable
 for_window [app_id="GParted"] floating enable
 for_window [app_id="hdajackretask"] floating enable
 for_window [app_id="imv"] floating enable

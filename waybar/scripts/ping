@@ -1,5 +1,5 @@
 #!/bin/sh
 
-current=$(ping $(awk '/^nameserver/ {print $2; exit}' /etc/resolv.conf) -c 1 | grep 'time=' | awk -F 'time=' '{print $2}' | awk '{print $1}')
+current=$(ping google.com -c 1 | grep 'time=' | awk -F 'time=' '{print $2}' | awk '{print $1}')
 
 echo "${current}ms"

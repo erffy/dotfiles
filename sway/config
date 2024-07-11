@@ -1,6 +1,5 @@
 set $super Mod4
 set $alt Mod1
-set $shift Shift
 
 bar {
 	swaybar_command waybar

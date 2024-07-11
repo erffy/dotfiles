@@ -3,7 +3,7 @@
 #
 
 set $terminal kitty
-set $launcher rofi -show drun -show-icons -theme $HOME/.config/rofi/style.rasi
+set $rofi $HOME/.config/sway/scripts.d/rofi.sh
 set $files dolphin
 set $browser brave --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
 set $editor codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
