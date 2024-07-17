@@ -5,9 +5,9 @@
 exec_always --no-startup-id $HOME/.config/sway/scripts.d/wallpaper.sh
 exec_always --no-startup-id autotiling
 
-exec systemctl --user import-environment
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 exec /usr/lib/polkit-kde-authentication-agent-1
 exec wl-paste --watch clipman store --no-persist
