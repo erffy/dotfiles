@@ -7,9 +7,9 @@ LOG_FILE="$HOME/.erffy/install.log"
 
 DEPS=(
   "extra:alsa-tools:Alsa Tools"
-  "chaotic-aur:autotiling:Autotiling"
+  "extra:autotiling-rs:Autotiling"
   "extra:ark:Archive Manager"
-  "extra:brave:Web Browser"
+  "extra:chromium:Web Browser"
   "cachyos:clipman:Clipboard Manager"
   "extra:codium:Visual Studio Codium"
   "extra:dolphin:File Manager"
@@ -36,6 +36,5 @@ DEPS=(
   "extra:wl-clipboard:Copy/Paste Utility"
   "extra:wireplumber:Session and Policy Manager"
   "extra:xdg-desktop-portal:XDG Desktop Portal"
-  "extra:xdg-desktop-portal-gtk:XDG Desktop Portal GTK"
   "extra:xdg-desktop-portal-wlr:XDG Desktop Portal WLR"
 )
