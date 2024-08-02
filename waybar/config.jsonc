@@ -3,23 +3,25 @@
   "position": "top",
   "reload_style_on_change": true,
   "spacing": 5,
-  "modules-left": [ "cpu", "memory", "network", "custom/ping" ],
-  "modules-center": [ "sway/workspaces" ],
-  "modules-right": [ "tray", "custom/media", "wireplumber", "clock" ],
+  "modules-left": [
+    "cpu",
+    "custom/memory",
+    "network",
+    "custom/ping"
+  ],
+  "modules-center": [
+    "sway/workspaces"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/media",
+    "custom/updates",
+    "wireplumber",
+    "clock"
+  ],
   "tray": {
     "icon-size": 15,
     "spacing": 5
-  },
-  "custom/media": {
-    "interval": 1,
-    "format": "  {}",
-    "escape": true,
-    "tooltip": false,
-    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
-    "on-click": "playerctl play-pause",
-    "on-click-right": "playerctl next",
-    "on-click-middle": "playerctl previous",
-    "max-length": 45
   },
   "clock": {
     "format": "  {:%I:%M %p ・   %d/%m/%y}",
@@ -58,12 +60,14 @@
     },
     "on-click": "pavucontrol"
   },
-  "memory": {
-    "interval": 1,
-    "format": "  {used:0.2f} / {total:0.0f} GB",
-    "min-length": 12,
-    "max-length": 20
-  },
+  //  I replaced this built-in module with my own script because I wanted to see more information, 
+  //  you can continue to use it if you wish, it's up to you.
+  // "memory": {
+  //  "interval": 1,
+  //  "format": "  {used:0.2f} / {total:0.0f} GB",
+  //  "min-length": 12,
+  //  "max-length": 20
+  // },
   "cpu": {
     "interval": 1,
     "format": "  {usage}% ・ {max_frequency}GHz",
@@ -72,22 +76,46 @@
   },
   "network": {
     "interval": 1,
-    "format-wifi": "   {bandwidthTotalBytes}",
-    "format-ethernet": "   {bandwidthTotalBytes}",
-    "format-linked": "  {ifname} ・ No IP",
-    "format-disconnected": "",
+    "format":"{icon}   {bandwidthTotalBytes}",
+    "format-icons": {
+      "wifi": "",
+      "ethernet": "",
+      "linked": "",
+      "disconnected": ""
+    },
     "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
     "tooltip-format": "{ipaddr} ・ {ifname}\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
     "tooltip-format-wifi": "  {essid} ({frequency}GHz) ({signalStrength}%)\n{ipaddr} ・ {ifname}\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
-    "min-length": 12,
+    "min-length": 10,
     "max-length": 20
   },
   "custom/ping": {
     "interval": 1,
-    "format": "   {}",
     "exec": "~/.config/waybar/scripts/ping.sh",
-    "tooltip": false,
-    "min-length": 12,
+    "return-type": "json",
+    "min-length": 10,
     "max-length": 35
+  },
+  "custom/updates": {
+    "interval": 120,
+    "exec": "~/.config/waybar/scripts/checkupdates.sh",
+    "exec-if": "pacman -Qi pacman-contrib",
+    "return-type": "json"
+  },
+  "custom/memory": {
+    "interval": 1,
+    "exec": "~/.config/waybar/scripts/memory.sh",
+    "return-type": "json"
+  },
+  "custom/media": {
+    "interval": 1,
+    "format": "  {}",
+    "escape": true,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
+    "max-length": 45
   }
 }

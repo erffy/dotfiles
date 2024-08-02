@@ -57,9 +57,10 @@ tooltip {
 }
 
 #cpu,
-#memory,
+#memory, #custom-memory,
 #custom-media,
 #custom-ping,
+#custom-updates,
 #clock,
 #battery,
 #wireplumber,
@@ -77,7 +78,8 @@ tooltip {
 	color: @blue;
 }
 
-#memory {
+#memory,
+#custom-memory {
   color: @sky;
 }
 
@@ -111,4 +113,8 @@ tooltip {
 
 #custom-ping {
   color: @peach;
+}
+
+#custom-updates {
+  color: @yellow;
 }
