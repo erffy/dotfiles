@@ -100,7 +100,7 @@
     "interval": 120,
     "exec": "~/.config/waybar/scripts/checkupdates.sh",
     "exec-if": "pacman -Qi pacman-contrib",
-    "on-click-right": "pkexec ~/.config/sway/scripts.d/update.sh",
+    "on-click-right": "pkexec ~/.config/waybar/scripts/update.sh",
     "return-type": "json"
   },
   "custom/memory": {
