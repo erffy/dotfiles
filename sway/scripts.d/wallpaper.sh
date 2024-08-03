@@ -57,6 +57,9 @@ while true; do
   # Stop the previous wallpaper
   stop_swaybg
 
+  # Wait for the previous wallpaper to be fully removed
+  sleep $TRANSITION_TIME
+
   # Start new wallpaper
   start_swaybg $WALLPAPER
 
