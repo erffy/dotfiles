@@ -2,22 +2,26 @@
   "layer": "top",
   "position": "top",
   "reload_style_on_change": true,
-  "spacing": 5,
   "modules-left": [
+    "custom/l_end",
     "cpu",
     "custom/memory",
     "network",
-    "custom/ping"
+    "custom/ping",
+    "custom/r_end"
   ],
   "modules-center": [
     "sway/workspaces"
   ],
   "modules-right": [
+    "custom/l_end",
     "tray",
     "custom/media",
     "custom/updates",
+    "battery",
     "wireplumber",
-    "clock"
+    "clock",
+    "custom/r_end"
   ],
   "tray": {
     "icon-size": 15,
@@ -76,16 +80,15 @@
   },
   "network": {
     "interval": 1,
-    "format":"{icon}   {bandwidthTotalBytes}",
+    "format": "{icon}   {bandwidthTotalBytes}",
     "format-icons": {
       "wifi": "",
       "ethernet": "",
-      "linked": "",
-      "disconnected": ""
+      "linked": ""
     },
-    "on-click": "wl-copy $(ip address show up scope global | grep inet | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c5-)",
-    "tooltip-format": "{ipaddr} ・ {ifname}\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
-    "tooltip-format-wifi": "  {essid} ({frequency}GHz) ({signalStrength}%)\n{ipaddr} ・ {ifname}\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
+    "format-disconnected": "",
+    "tooltip-format": "IP: {ipaddr}\nIF: {ifname}\n  {bandwidthUpBytes}\n  {bandwidthDownBytes}",
+    "tooltip-format-wifi": "SSID: {essid}\nGateway: {gwaddr}\nIP: {ipaddr}\nIF: {ifname}\nFrequency: {frequency}GHz\nStrength: {signalStrength}% ({signaldBm}dBm)\n  {bandwidthUpBytes} ・   {bandwidthDownBytes}",
     "min-length": 10,
     "max-length": 20
   },
@@ -118,5 +121,16 @@
     "on-click-right": "playerctl next",
     "on-click-middle": "playerctl previous",
     "max-length": 45
+  },
+  // 
+  "custom/l_end": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/r_end": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
   }
 }

@@ -7,7 +7,7 @@ MANAGERS=("yay" "pacman" "paru")
 
 for manager in "${MANAGERS[@]}"; do
   if which $manager &>/dev/null; then
-    $manager -Syu --noconfirm >"$LOG" 2>&1
+    $manager -Syu --noconfirm --noprogressbar >"$LOG" 2>&1
     exit 0
   fi
 done
