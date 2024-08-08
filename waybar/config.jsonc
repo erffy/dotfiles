@@ -64,7 +64,7 @@
     },
     "on-click": "pavucontrol"
   },
-  //  I replaced this built-in module with my own script because I wanted to see more information, 
+  //  I replaced this built-in module with my own script because I wanted to see more information,
   //  you can continue to use it if you wish, it's up to you.
   // "memory": {
   //  "interval": 1,
@@ -102,13 +102,14 @@
   "custom/updates": {
     "interval": 120,
     "exec": "~/.config/waybar/scripts/checkupdates.sh",
-    "exec-if": "pacman -Qi pacman-contrib",
+    "exec-if": "which checkupdates",
     "on-click-right": "pkexec ~/.config/waybar/scripts/update.sh",
     "return-type": "json"
   },
   "custom/memory": {
     "interval": 1,
     "exec": "~/.config/waybar/scripts/memory.sh",
+    "exec-if": "which bc",
     "return-type": "json"
   },
   "custom/media": {
@@ -122,7 +123,7 @@
     "on-click-middle": "playerctl previous",
     "max-length": 45
   },
-  // 
+  //
   "custom/l_end": {
     "format": " ",
     "interval": "once",

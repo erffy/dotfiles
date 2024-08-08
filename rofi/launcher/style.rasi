@@ -94,6 +94,7 @@ textbox-prompt-colon {
     expand:                      false;
     background-color:            inherit;
     text-color:                  inherit;
+    str:                         "";
 }
 
 entry {
